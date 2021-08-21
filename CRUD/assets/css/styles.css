@@ -1,0 +1,96 @@
+*,
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+}
+
+form {
+  width: 60%;
+  margin: auto;
+  padding: 10px;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info-field {
+  display: flex;
+  flex-direction: column;
+  width: 49%;
+}
+
+.user-info-field input {
+  padding: 10px;
+  margin-top: 10px;
+  outline: none;
+  border-radius: 10px;
+  border: 2px solid #000;
+}
+
+input[type="submit"] {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #57be5d;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+
+#usersContainer {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.userList {
+  width: 70%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.userItem {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.userInfo {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.actions {
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.actions button {
+  width: 45%;
+  border: none;
+  padding: 10px;
+  color: #fff;
+}
+
+.update {
+  background-color: #ffd400;
+}
+
+.delete {
+  background-color: #ff5400;
+}
