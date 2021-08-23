@@ -138,8 +138,6 @@ const createUser = (e) => {
   document.getElementById("Twitter").checked = false;
   document.getElementById("Instagram").checked = false;
   document.getElementById("Github").checked = false;
-
-  console.log(users);
 };
 
 const tbody = document.getElementById("tbody");
@@ -201,4 +199,3 @@ const form = document.getElementById("main-form");
 // Eventos
 renderList();
 form.onsubmit = createUser;
-console.log(users);
