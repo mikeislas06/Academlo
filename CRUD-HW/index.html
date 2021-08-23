@@ -33,7 +33,77 @@
     <title>CRUD JS</title>
   </head>
   <body>
-    <h1>CRUD with JavaScript</h1>
+    <h1>CRUD con JavaScript</h1>
+
+    <div class="container-form">
+      <form action="" id="main-form">
+        <div class="user-info">
+          <div class="user-info-field">
+            <label for="name">Nombre</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Escribe tu nombre "
+              required
+            />
+          </div>
+          <div class="user-info-field">
+            <label for="email">Correo</label>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="Escribe tu correo "
+              required
+            />
+          </div>
+          <div class="user-info-field">
+            <label for="country">País</label>
+            <input
+              type="text"
+              name="country"
+              id="country"
+              placeholder="Escribe tu país "
+              required
+            />
+          </div>
+          <div class="user-info-field">
+            <input
+              type="checkbox"
+              id="Facebook"
+              name="Facebook"
+              value="Facebook"
+            />
+            <label for="Facebook"> Facebook</label>
+            <input
+              type="checkbox"
+              id="Youtube"
+              name="Youtube"
+              value="Youtube"
+            />
+            <label for="Youtube"> Youtube</label>
+            <input
+              type="checkbox"
+              id="Twitter"
+              name="Twitter"
+              value="Twitter"
+            />
+            <label for="Twitter"> Twitter</label>
+            <input
+              type="checkbox"
+              id="Instagram"
+              name="Instagram"
+              value="Instagram"
+            />
+            <label for="Instagram"> Instagram</label>
+            <input type="checkbox" id="Github" name="Github" value="Github" />
+            <label for="Github"> Github</label>
+          </div>
+        </div>
+        <input type="submit" value="Guardar Usuario" id="submit" />
+      </form>
+    </div>
 
     <div class="container-table">
       <div class="table-wrapper">
