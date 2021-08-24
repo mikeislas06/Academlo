@@ -98,10 +98,36 @@ const deleteUser = (index) => {
 const editUser = (index) => {
   console.log(users[index]);
   modal.style.display = "block";
+  modalContent.innerHTML = "";
+  const editUserInfo = document.createElement("div");
+  editUserInfo.classList.add("user-info");
+  const inputContainerName = document.createElement("div");
+  inputContainerName.classList.add("user-info-field");
+  const inputContainerJob = document.createElement("div");
+  inputContainerJob.classList.add("user-info-field");
   const inputName = document.createElement("input");
   const labelName = document.createElement("label");
   const inputJob = document.createElement("input");
   const labelJob = document.createElement("label");
+
+  labelName.innerHTML = "Nombre: ";
+  labelName.setAttribute("for", "name");
+  inputName.value = users[index].nombre;
+
+  labelJob.innerHTML = "Ocupacion: ";
+  labelJob.setAttribute("for", "job");
+  inputJob.value = users[index].ocupacion;
+
+  inputContainerName.appendChild(labelName);
+  inputContainerName.appendChild(inputName);
+
+  inputContainerName.appendChild(labelJob);
+  inputContainerName.appendChild(inputJob);
+
+  editUserInfo.appendChild(inputContainerName);
+  editUserInfo.appendChild(inputContainerJob);
+
+  modalContent.appendChild(editUserInfo);
 };
 
 // Eventos
