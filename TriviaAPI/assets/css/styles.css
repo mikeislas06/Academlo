@@ -28,7 +28,7 @@ h4 {
 
 .trivia-card {
   width: 450px;
-  height: 550px;
+  min-height: 550px;
   padding: 25px;
   margin: 0 auto;
   margin-bottom: 20px;

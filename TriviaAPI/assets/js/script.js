@@ -7,6 +7,7 @@ const difficulty = document.getElementById("difficulty");
 const type = document.getElementById("type");
 
 goBtn.addEventListener("click", () => {
+  triviaContainer.innerHTML = "";
   let search = "amount=" + number.value;
   if (category.value !== "any") {
     search += "&category=" + category.value;
@@ -71,7 +72,7 @@ function showQuestion(data) {
     //Adding text fetched from API object
     category.innerHTML = "Category: " + question.category;
     title.innerHTML = question.question;
-    button.innerText = "Next Question";
+    button.innerText = "Check Answer";
 
     //Adding child tags to containers
     qCategory.appendChild(category);
