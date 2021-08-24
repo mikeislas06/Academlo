@@ -176,6 +176,7 @@ const renderList = () => {
         }
 
         socialContainer.setAttribute("href", social.url);
+        socialContainer.setAttribute("target", "_blank");
         socialContainer.appendChild(socialIcon);
         socialMedia.appendChild(socialContainer);
         userSocial.appendChild(socialMedia);
