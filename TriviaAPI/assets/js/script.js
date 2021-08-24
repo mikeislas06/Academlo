@@ -32,10 +32,13 @@ function clearForm() {
 }
 
 async function getQuestions(url) {
-  const resp = await fetch(url);
-  const respData = await resp.json();
+  // const resp = await fetch(url);
+  // const respData = await resp.json();
+  // showQuestion(respData.results);
 
-  showQuestion(respData.results);
+  const respData = fetch(url)
+    .then((response) => response.json())
+    .then((result) => showQuestion(result.results));
 }
 
 function showQuestion(data) {
