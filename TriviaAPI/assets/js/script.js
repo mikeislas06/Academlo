@@ -98,7 +98,7 @@ function showQuestion(data) {
     option.appendChild(correctAnswer);
     option.appendChild(correctAnswerLabel);
     answers.push(option);
-    qAnswers.appendChild(option);
+    // qAnswers.appendChild(option);
 
     question.incorrect_answers.forEach((incorrect_answer) => {
       const option = document.createElement("div");
@@ -116,21 +116,20 @@ function showQuestion(data) {
       option.appendChild(incorrectAnswer);
       option.appendChild(incorrectAnswerLabel);
       answers.push(option);
-      qAnswers.appendChild(option);
+      // qAnswers.appendChild(option);
     });
 
-    console.log("Answers in first order");
-    console.log(answers);
-    const shuffledQuestions = shuffle(answers);
-    console.log("Answers shuffled");
-    console.log(shuffledQuestions);
+    shuffle(answers);
+    answers.forEach((answer) => {
+      qAnswers.appendChild(answer);
+    });
 
     triviaContainer.appendChild(triviaCard);
   });
 }
 
 function shuffle(array) {
-  var currentIndex = array.length,
+  let currentIndex = array.length,
     randomIndex;
 
   // While there remain elements to shuffle...
@@ -145,6 +144,5 @@ function shuffle(array) {
       array[currentIndex],
     ];
   }
-
   return array;
 }
