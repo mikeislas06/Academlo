@@ -87,6 +87,14 @@ input[type="submit"] {
   color: #fff;
 }
 
+.modal-content button {
+  width: 45%;
+  border: none;
+  padding: 10px;
+  color: #fff;
+  margin-top: 10px;
+}
+
 .update {
   background-color: #ffd400;
 }

@@ -110,6 +110,10 @@ const editUser = (index) => {
   const inputJob = document.createElement("input");
   const labelJob = document.createElement("label");
 
+  const modalEditBtn = document.createElement("button");
+  modalEditBtn.classList = "update";
+  modalEditBtn.innerText = "Edit Entry";
+
   labelName.innerHTML = "Nombre: ";
   labelName.setAttribute("for", "name");
   inputName.value = users[index].nombre;
@@ -128,6 +132,7 @@ const editUser = (index) => {
   editUserInfo.appendChild(inputContainerJob);
 
   modalContent.appendChild(editUserInfo);
+  modalContent.appendChild(modalEditBtn);
 };
 
 // Eventos
