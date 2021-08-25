@@ -83,6 +83,8 @@ function showQuestion(data) {
     //Creating options radio buttons
     const option = document.createElement("div");
     option.classList.add("option");
+
+    let answers = [];
     const correctAnswer = document.createElement("input");
     const correctAnswerLabel = document.createElement("label");
 
@@ -95,6 +97,7 @@ function showQuestion(data) {
 
     option.appendChild(correctAnswer);
     option.appendChild(correctAnswerLabel);
+    answers.push(option);
     qAnswers.appendChild(option);
 
     question.incorrect_answers.forEach((incorrect_answer) => {
@@ -112,8 +115,36 @@ function showQuestion(data) {
 
       option.appendChild(incorrectAnswer);
       option.appendChild(incorrectAnswerLabel);
+      answers.push(option);
       qAnswers.appendChild(option);
     });
+
+    console.log("Answers in first order");
+    console.log(answers);
+    const shuffledQuestions = shuffle(answers);
+    console.log("Answers shuffled");
+    console.log(shuffledQuestions);
+
     triviaContainer.appendChild(triviaCard);
   });
+}
+
+function shuffle(array) {
+  var currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
 }
