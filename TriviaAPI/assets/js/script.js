@@ -6,6 +6,9 @@ const category = document.getElementById("category");
 const difficulty = document.getElementById("difficulty");
 const type = document.getElementById("type");
 
+let questionsArray = [];
+let q = 0;
+
 goBtn.addEventListener("click", () => {
   triviaContainer.innerHTML = "";
   let search = "amount=" + number.value;
@@ -43,6 +46,7 @@ async function getQuestions(url) {
 }
 
 function showQuestion(data) {
+  questionsArray = data;
   data.forEach((question) => {
     //Creating trivia components containers
     const triviaCard = document.createElement("div");
@@ -93,12 +97,11 @@ function showQuestion(data) {
     correctAnswer.setAttribute("name", question.question);
     correctAnswer.setAttribute("value", question.correct_answer);
     correctAnswerLabel.setAttribute("for", question.correct_answer);
-    correctAnswerLabel.innerText = question.correct_answer;
+    correctAnswerLabel.innerHTML = question.correct_answer;
 
     option.appendChild(correctAnswer);
     option.appendChild(correctAnswerLabel);
     answers.push(option);
-    // qAnswers.appendChild(option);
 
     question.incorrect_answers.forEach((incorrect_answer) => {
       const option = document.createElement("div");
@@ -111,12 +114,11 @@ function showQuestion(data) {
       incorrectAnswer.setAttribute("name", question.question);
       incorrectAnswer.setAttribute("value", incorrect_answer);
       incorrectAnswerLabel.setAttribute("for", incorrect_answer);
-      incorrectAnswerLabel.innerText = incorrect_answer;
+      incorrectAnswerLabel.innerHTML = incorrect_answer;
 
       option.appendChild(incorrectAnswer);
       option.appendChild(incorrectAnswerLabel);
       answers.push(option);
-      // qAnswers.appendChild(option);
     });
 
     shuffle(answers);
