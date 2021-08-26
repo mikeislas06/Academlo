@@ -160,8 +160,11 @@ function showFinalScore(){
     const finalScoreCard = document.createElement("div");
     finalScoreCard.classList = "final-score-card";
     const finalScore = document.createElement("h4");
+    const finalScoreNumber = document.createElement("span");
 
-    finalScore.innerText = `You had ${scoreCorrect} correct answers!`;
+    finalScore.innerHTML = "Your final score is: ";
+    finalScoreNumber.innerHTML = scoreCorrect;
+    finalScore.appendChild(finalScoreNumber);
 
     finalScoreCard.appendChild(finalScore);
     triviaContainer.appendChild(finalScoreCard);
