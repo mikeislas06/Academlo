@@ -1,5 +1,7 @@
 const triviaContainer = document.getElementById("triviaContainer");
 const score = document.getElementById("score");
+const incorrectAnswers = document.getElementById("incorrectAnswers");
+const scoreContainer = document.getElementById("scoreContainer");
 const goBtn = document.getElementById("goBtn");
 const number = document.getElementById("number");
 const category = document.getElementById("category");
@@ -8,6 +10,9 @@ const type = document.getElementById("type");
 
 let questionsArray = [];
 let q = 0;
+let scoreCorrect = 0;
+let incorrectAnswersScore = 0;
+let finalFlag = false;
 
 goBtn.addEventListener("click", () => {
   triviaContainer.innerHTML = "";
@@ -36,18 +41,13 @@ function clearForm() {
 }
 
 async function getQuestions(url) {
-  // const resp = await fetch(url);
-  // const respData = await resp.json();
-  // showQuestion(respData.results);
-
   const respData = fetch(url)
     .then((response) => response.json())
-    .then((result) => showQuestion(result.results));
+    .then((result) => showOneQuestion(result.results, q));
 }
 
-function showQuestion(data) {
-  questionsArray = data;
-  data.forEach((question) => {
+function showOneQuestion(questions, q){
+    triviaContainer.innerHTML = "";
     //Creating trivia components containers
     const triviaCard = document.createElement("div");
     const qTitle = document.createElement("div");
@@ -74,14 +74,38 @@ function showQuestion(data) {
     const button = document.createElement("button");
 
     //Adding text fetched from API object
-    category.innerHTML = "Category: " + question.category;
-    title.innerHTML = question.question;
+    category.innerHTML = "Category: " + questions[q].category;
+    title.innerHTML = questions[q].question;
     button.innerText = "Check Answer";
 
     //Adding child tags to containers
     qCategory.appendChild(category);
     qTitle.appendChild(title);
     button.setAttribute("type", "submit");
+    // button.onclick = checkCorrectAnswer(question);
+    button.addEventListener('click', () => {
+        const questionAnswers = document.getElementsByName(questions[q].question);
+        let selectedAnswer = "";
+        for (let i = 0; i < questionAnswers.length; i++) {
+            const element = questionAnswers[i];
+            if(element.checked){
+                selectedAnswer = element.value;
+            }
+        }
+        if(selectedAnswer === questions[q].correct_answer){
+            scoreCorrect++;
+            score.innerText = scoreCorrect;
+        }
+        else{
+            incorrectAnswersScore++;
+            incorrectAnswers.innerText = incorrectAnswersScore
+        }
+        q++;
+        verifyLastQuestion(questions.length, q);
+        if(!finalFlag){
+            showOneQuestion(questions, q);
+        }
+    });
     qButton.appendChild(button);
 
     //Creating options radio buttons
@@ -93,17 +117,17 @@ function showQuestion(data) {
     const correctAnswerLabel = document.createElement("label");
 
     correctAnswer.setAttribute("type", "radio");
-    correctAnswer.setAttribute("id", question.correct_answer);
-    correctAnswer.setAttribute("name", question.question);
-    correctAnswer.setAttribute("value", question.correct_answer);
-    correctAnswerLabel.setAttribute("for", question.correct_answer);
-    correctAnswerLabel.innerHTML = question.correct_answer;
+    correctAnswer.setAttribute("id", questions[q].correct_answer);
+    correctAnswer.setAttribute("name", questions[q].question);
+    correctAnswer.setAttribute("value", questions[q].correct_answer);
+    correctAnswerLabel.setAttribute("for", questions[q].correct_answer);
+    correctAnswerLabel.innerHTML = questions[q].correct_answer;
 
     option.appendChild(correctAnswer);
     option.appendChild(correctAnswerLabel);
     answers.push(option);
 
-    question.incorrect_answers.forEach((incorrect_answer) => {
+    questions[q].incorrect_answers.forEach((incorrect_answer) => {
       const option = document.createElement("div");
       option.classList.add("option");
       const incorrectAnswer = document.createElement("input");
@@ -111,7 +135,7 @@ function showQuestion(data) {
 
       incorrectAnswer.setAttribute("type", "radio");
       incorrectAnswer.setAttribute("id", incorrect_answer);
-      incorrectAnswer.setAttribute("name", question.question);
+      incorrectAnswer.setAttribute("name", questions[q].question);
       incorrectAnswer.setAttribute("value", incorrect_answer);
       incorrectAnswerLabel.setAttribute("for", incorrect_answer);
       incorrectAnswerLabel.innerHTML = incorrect_answer;
@@ -127,7 +151,20 @@ function showQuestion(data) {
     });
 
     triviaContainer.appendChild(triviaCard);
-  });
+}
+
+function showFinalScore(){
+    triviaContainer.innerHTML = "";
+    scoreContainer.innerHTML = "";
+
+    const finalScoreCard = document.createElement("div");
+    finalScoreCard.classList = "final-score-card";
+    const finalScore = document.createElement("h4");
+
+    finalScore.innerText = `You had ${scoreCorrect} correct answers!`;
+
+    finalScoreCard.appendChild(finalScore);
+    triviaContainer.appendChild(finalScoreCard);
 }
 
 function shuffle(array) {
@@ -147,4 +184,12 @@ function shuffle(array) {
     ];
   }
   return array;
+}
+
+function verifyLastQuestion(length, q){
+    if(length === q){
+        showFinalScore();
+        finalFlag = true;
+    }
+
 }
