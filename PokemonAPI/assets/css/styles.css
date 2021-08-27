@@ -6,17 +6,29 @@
 }
 
 header {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
-    min-height: 430px;
+    min-height: 273px;
     background: url("../imgs/pokemonBanner.jpg");
     background-repeat: no-repeat;
-    position: relative;
+    background-size: contain;
+}
+
+@media (min-width: 1300px) {
+    header {
+        width: 50%;
+    }
 }
 
 .pokemon-search {
+    min-height: 273px;
+    position: relative;
+}
+
+.pokemon-search form {
     position: absolute;
-    top: 200px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 label {
@@ -29,3 +41,22 @@ input[type="submit"] {
     height: 40px;
     letter-spacing: 5px;
 }
+
+#pokeName {
+    text-transform: capitalize;
+}
+
+#pokeType {
+    text-transform: capitalize;
+}
+
+/* .row {
+    height: 100%;
+    padding: 20px 0;
+}
+
+.col-6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+} */

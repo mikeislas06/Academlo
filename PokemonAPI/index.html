@@ -27,7 +27,7 @@
     <body>
         <header>
             <div class="container pokemon-search">
-                <form action="">
+                <form>
                     <label for="pokemonNameInput">Pokemon: </label>
                     <input
                         type="text"
@@ -35,7 +35,7 @@
                         id="pokemonNameInput"
                         placeholder="Choose a Pokemon"
                     />
-                    <input type="submit" value="GO!" />
+                    <input id="goBtn" type="submit" value="GO!" />
                 </form>
             </div>
         </header>
@@ -66,12 +66,7 @@
                             <div id="buttontopPicture2"></div>
                         </div>
                         <div id="picture">
-                            <img
-                                id="pokeImage"
-                                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/200653/psykokwak.gif"
-                                alt="psykokwak"
-                                height="170"
-                            />
+                            <img id="pokeImage" src="" alt="" height="170" />
                         </div>
                         <div id="buttonbottomPicture"></div>
                         <div id="speakers">
@@ -106,25 +101,18 @@
                     <div id="stats">
                         <div class="row">
                             <div class="col-6">
-                                <h6>
-                                    Name: <span id="pokeName">Psyduck</span>
-                                </h6>
-                                <h6>Type: <span id="pokeType">Water</span></h6>
+                                <h6>Name: <span id="pokeName"></span></h6>
+                                <h6>Type: <span id="pokeType"></span></h6>
                             </div>
                             <div class="col-6">
-                                <h6>
-                                    Height: <span id="pokeHeight">2'072''</span>
-                                </h6>
+                                <h6>Height: <span id="pokeHeight"></span></h6>
                                 <h6>
                                     Weight:
-                                    <span id="pokeWeight">43.2 lbs.</span>
+                                    <span id="pokeWeight"></span>
                                 </h6>
                             </div>
                         </div>
-                        <h6 id="pokemonDescription">
-                            The duck Pokemon Uses mysterious powers to perform
-                            various attacks.
-                        </h6>
+                        <h6 id="pokemonDescription"></h6>
                     </div>
                     <div id="blueButtons1">
                         <div class="blueButton"></div>
